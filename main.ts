@@ -1,6 +1,6 @@
 function ReadAnalog () {
     basic.pause(1000)
-    if (Math.map(pins.analogReadPin(AnalogPin.P1), 0, 1023, 100, 0) < 30) {
+    if (pins.analogReadPin(AnalogPin.P1) < 700) {
         basic.pause(1000)
         led.stopAnimation()
         led.setBrightness(80)
@@ -31,7 +31,7 @@ function ReadAnalog () {
         led.setBrightness(266)
         basic.showIcon(IconNames.Sad)
         basic.pause(1000)
-        while (Math.map(pins.analogReadPin(AnalogPin.P1), 0, 1023, 100, 0) <= 30) {
+        while (pins.analogReadPin(AnalogPin.P1) <= 700) {
             music.playMelody("- C5 - C5 - C5 - C5 ", 120)
             basic.pause(200)
             basic.showLeds(`
@@ -58,7 +58,7 @@ function ReadAnalog () {
                 . . # . .
                 `)
         }
-        if (Math.map(pins.analogReadPin(AnalogPin.P1), 0, 1023, 100, 0) > 90) {
+        if (pins.analogReadPin(AnalogPin.P1) > 950) {
             basic.pause(1000)
             led.stopAnimation()
             basic.showLeds(`
@@ -131,11 +131,15 @@ function ReadAnalog () {
     }
 }
 function ConvAnalog () {
-    basic.showNumber(Math.map(pins.analogReadPin(AnalogPin.P1), 0, 1023, 100, 0))
+    basic.showNumber(Math.map(pins.analogReadPin(AnalogPin.P1), 0, 1023, 0, 100))
 }
 input.onButtonPressed(Button.A, function () {
     music.stopAllSounds()
-    pins.analogWritePin(AnalogPin.P1, 0)
+    pins.analogWritePin(AnalogPin.P1, 1023)
+})
+input.onButtonPressed(Button.B, function () {
+    led.stopAnimation()
+    basic.showNumber(pins.analogReadPin(AnalogPin.P1))
 })
 basic.pause(1000)
 led.setBrightness(50)
