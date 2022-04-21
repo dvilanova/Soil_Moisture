@@ -28,7 +28,7 @@ function ReadAnalog () {
             # # # # #
             `)
         basic.pause(1000)
-        led.setBrightness(266)
+        led.setBrightness(155)
         basic.showIcon(IconNames.Sad)
         basic.pause(1000)
         while (pins.analogReadPin(AnalogPin.P1) <= 700) {
@@ -69,6 +69,7 @@ function ReadAnalog () {
                 . . . . .
                 `)
             basic.pause(500)
+            led.setBrightness(155)
             basic.showLeds(`
                 # # # # #
                 # # # # #
@@ -100,7 +101,7 @@ function ReadAnalog () {
                 . . . . .
                 . . . . .
                 `)
-            led.setBrightness(100)
+            led.setBrightness(90)
             basic.showLeds(`
                 . . . . .
                 . . . . .
@@ -108,7 +109,7 @@ function ReadAnalog () {
                 . . . . .
                 . # # # .
                 `)
-            led.setBrightness(200)
+            led.setBrightness(180)
             basic.showLeds(`
                 . . . . .
                 . . . . .
@@ -116,7 +117,7 @@ function ReadAnalog () {
                 . . # . .
                 # # # # #
                 `)
-            led.setBrightness(255)
+            led.setBrightness(200)
             basic.showLeds(`
                 . . . . .
                 . . . . .
@@ -142,7 +143,7 @@ input.onButtonPressed(Button.B, function () {
     basic.showNumber(pins.analogReadPin(AnalogPin.P1))
 })
 basic.pause(1000)
-led.setBrightness(50)
+led.setBrightness(30)
 basic.showLeds(`
     . # # # .
     # . # . #
@@ -151,7 +152,7 @@ basic.showLeds(`
     . # # # .
     `)
 basic.pause(1000)
-led.setBrightness(150)
+led.setBrightness(120)
 basic.showLeds(`
     . # # # .
     # . # . #
@@ -160,7 +161,7 @@ basic.showLeds(`
     . # # # .
     `)
 basic.pause(1000)
-led.setBrightness(255)
+led.setBrightness(190)
 basic.showLeds(`
     . # # # .
     # . # . #
@@ -171,6 +172,7 @@ basic.showLeds(`
 basic.pause(1000)
 basic.forever(function () {
     led.stopAnimation()
+    led.setBrightness(50)
     basic.showNumber(input.temperature())
     basic.showString("oC")
     basic.clearScreen()
